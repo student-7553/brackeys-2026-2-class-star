@@ -51,6 +51,16 @@ func stop_game() -> void:
 	game_stopped.emit()
 
 
+func on_player_spotted() -> void:
+	if not is_running:
+		return
+	stop_game()
+	if teacher != null and is_instance_valid(teacher):
+		teacher.set_physics_process(false)
+	_time_label.text = "SPOTTED!"
+	_time_label.add_theme_color_override("font_color", Color(1.0, 0.25, 0.2))
+
+
 func _spawn_player() -> void:
 	if player != null and is_instance_valid(player):
 		player.queue_free()
@@ -69,6 +79,9 @@ func _spawn_teacher() -> void:
 	teacher.position = TEACHER_SPAWN_POSITION
 	add_child(teacher)
 	teacher.start_moving(tables)
+	var vision := teacher.get_node("TeacherVision") as TeacherVision
+	if vision != null:
+		vision.setup(player, self)
 	teacher_spawned.emit(teacher)
 
 
