@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c2t60lbmucfu3"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_game_manager"]
+[ext_resource type="Shader" uid="uid://csmpyebahg0rg" path="res://shaders/ground_grid.gdshader" id="2_grid"]
+
+[sub_resource type="Environment" id="Environment_world"]
+background_mode = 1
+background_color = Color(0.55, 0.72, 0.88, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.35
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ground"]
+render_priority = 0
+shader = ExtResource("2_grid")
+shader_parameter/floor_color = Color(0.28, 0.32, 0.3, 1)
+shader_parameter/line_color = Color(0.72, 0.76, 0.7, 1)
+shader_parameter/major_line_color = Color(0.92, 0.94, 0.9, 1)
+shader_parameter/cell_size = 1.0
+shader_parameter/major_every = 10.0
+shader_parameter/line_width = 1.5
+shader_parameter/major_line_width = 2.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
+material = SubResource("ShaderMaterial_ground")
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(100, 1, 100)
+
+[node name="Main" type="Node3D" unique_id=1774947516]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_game_manager")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=589472149]
+environment = SubResource("Environment_world")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2009020287]
+transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, 0, 10, 0)
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=140891829]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1844152984]
+mesh = SubResource("PlaneMesh_ground")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1473388302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ground")
