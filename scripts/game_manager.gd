@@ -2,16 +2,24 @@ class_name GameManager
 extends Node
 
 signal player_spawned(player: CharacterBody3D)
+signal teacher_spawned(teacher: Teacher)
 signal game_started
 signal game_stopped
 
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
 const TABLE_SCENE := preload("res://scenes/table.tscn")
+const TEACHER_SCENE := preload("res://scenes/teacher.tscn")
 const SPAWN_POSITION := Vector3.ZERO
-const TABLE_GRID_SIZE := 4
-const TABLE_SPACING := 4.0
+
+@export var TABLE_GRID_SIZE := 16
+@export var TABLE_SPACING := 6.0
+@export var TABLE_WIDTH := 1.5
+@export var TABLE_HEIGHT := 0.75
+@export var TABLE_LENGTH := 1.5
+@export var TEACHER_SPAWN_POSITION := Vector3(0.0, 0.0, -8.0)
 
 var player: CharacterBody3D
+var teacher: Teacher
 var tables: Array[Table] = []
 var elapsed_time := 0.0
 var is_running := false
@@ -31,6 +39,7 @@ func start_game() -> void:
 	is_running = true
 	_spawn_player()
 	_spawn_tables()
+	_spawn_teacher()
 	_timer.start()
 	_update_time_label()
 	game_started.emit()
@@ -52,12 +61,26 @@ func _spawn_player() -> void:
 	player_spawned.emit(player)
 
 
+func _spawn_teacher() -> void:
+	if teacher != null and is_instance_valid(teacher):
+		teacher.queue_free()
+
+	teacher = TEACHER_SCENE.instantiate() as Teacher
+	teacher.position = TEACHER_SPAWN_POSITION
+	add_child(teacher)
+	teacher.start_moving(tables)
+	teacher_spawned.emit(teacher)
+
+
 func _spawn_tables() -> void:
 	_clear_tables()
 	var origin := (TABLE_GRID_SIZE - 1) * TABLE_SPACING * 0.5
 	for x in TABLE_GRID_SIZE:
 		for z in TABLE_GRID_SIZE:
 			var table := TABLE_SCENE.instantiate() as Table
+			table.WIDTH = TABLE_WIDTH
+			table.HEIGHT = TABLE_HEIGHT
+			table.LENGTH = TABLE_LENGTH
 			table.position = Vector3(
 				x * TABLE_SPACING - origin,
 				0.0,
