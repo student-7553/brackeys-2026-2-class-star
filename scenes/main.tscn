@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cxh2ict3vqu8v" path="res://scripts/game_manager.gd" id="1_game_manager"]
 [ext_resource type="Shader" uid="uid://csmpyebahg0rg" path="res://shaders/ground_grid.gdshader" id="2_grid"]
-[ext_resource type="Resource" path="res://resources/const_data.tres" id="3_const_data"]
+[ext_resource type="Resource" uid="uid://bedaw6ylnujwl" path="res://resources/const_data.tres" id="3_const_data"]
+[ext_resource type="Script" path="res://scripts/input_manager.gd" id="4_input_manager"]
 
 [sub_resource type="Environment" id="Environment_world"]
 background_mode = 1
@@ -30,6 +31,9 @@ size = Vector2(100, 100)
 size = Vector3(100, 1, 100)
 
 [node name="Main" type="Node3D" unique_id=1774947516]
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("4_input_manager")
 
 [node name="GameManager" type="Node" parent="." unique_id=1222027095]
 script = ExtResource("1_game_manager")

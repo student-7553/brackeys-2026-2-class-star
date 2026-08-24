@@ -2,8 +2,8 @@ TODO
 
 [x] Add the teacher vision logic into the game
 [x] Add the student's in game
-[] Add the Student's paper in the game (Will be a static object)
-[] Add the Main player's paper in game (Will be a static object that can be interacted with a key click)
+[x] Add the Student's paper in the game (Will be a static object)
+[x] Add the Main player's paper in game (Will be a static object that can be interacted with a key click)
 [] Handle interaction with the main player's paper (Will make the paper fullscreen) 
 [] Have "stuff"? in the main player's paper
 [] Make main player's paper interactable (all will be multiple choice question)

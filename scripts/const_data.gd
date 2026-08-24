@@ -11,4 +11,7 @@ extends Resource
 @export var TABLE_SPACING := 6.0
 @export var TEACHER_SPAWN_POSITION := Vector3(0.0, 0.0, -8.0)
 @export var STUDENT_TABLE_GAP := 0.25
+@export var PAPER_WIDTH := 0.21
+@export var PAPER_HEIGHT := 0.008
+@export var PAPER_LENGTH := 0.297
 @export var COUNTDOWN := 120.0

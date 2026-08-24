@@ -1,18 +1,18 @@
 @tool
-class_name Table
+class_name PlayerPaper
 extends StaticBody3D
 
-@export var WIDTH := 1.5:
+@export var WIDTH := 0.21:
 	set(value):
 		WIDTH = maxf(value, 0.01)
 		_apply_size()
 
-@export var HEIGHT := 0.75:
+@export var HEIGHT := 0.008:
 	set(value):
-		HEIGHT = maxf(value, 0.01)
+		HEIGHT = maxf(value, 0.001)
 		_apply_size()
 
-@export var LENGTH := 1.5:
+@export var LENGTH := 0.297:
 	set(value):
 		LENGTH = maxf(value, 0.01)
 		_apply_size()
@@ -23,6 +23,14 @@ extends StaticBody3D
 
 func _ready() -> void:
 	_apply_size()
+	if Engine.is_editor_hint() or InputManager.instance == null:
+		return
+	if not InputManager.instance.interact_pressed.is_connected(_on_interact_pressed):
+		InputManager.instance.interact_pressed.connect(_on_interact_pressed)
+
+
+func _on_interact_pressed() -> void:
+	pass
 
 
 func _apply_size() -> void:

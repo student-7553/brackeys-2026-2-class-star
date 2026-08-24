@@ -7,16 +7,13 @@ signal game_started
 signal game_stopped
 
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
-const TABLE_SCENE := preload("res://scenes/table.tscn")
 const TEACHER_SCENE := preload("res://scenes/teacher.tscn")
 const STUDENT_SCENE := preload("res://scenes/student.tscn")
-const SPAWN_POSITION := Vector3.ZERO
 
 @export var const_data: ConstData
 
-var player: CharacterBody3D
+var player: Player
 var teacher: Teacher
-var tables: Array[Table] = []
 var students: Array[Student] = []
 var elapsed_time := 0.0
 var is_running := false
@@ -34,9 +31,7 @@ func _ready() -> void:
 func start_game() -> void:
 	elapsed_time = const_data.COUNTDOWN
 	is_running = true
-	_spawn_player()
-	_spawn_tables()
-	_spawn_students()
+	_spawn_classroom()
 	_spawn_teacher()
 	_timer.start()
 	_update_time_label()
@@ -59,14 +54,45 @@ func player_spotted(_spotted_player: Node3D) -> void:
 	_time_label.add_theme_color_override("font_color", Color(1.0, 0.25, 0.2))
 
 
-func _spawn_player() -> void:
-	if player != null and is_instance_valid(player):
-		player.queue_free()
+func _spawn_classroom() -> void:
+	_clear_students()
+	_clear_player()
 
-	player = PLAYER_SCENE.instantiate() as CharacterBody3D
-	player.position = SPAWN_POSITION
+	var grid_size := const_data.TABLE_GRID_SIZE
+	var origin := (grid_size - 1) * const_data.TABLE_SPACING * 0.5
+	var player_x := randi_range(0, grid_size - 1)
+	var player_z := randi_range(0, grid_size - 1)
+
+	for x in grid_size:
+		for z in grid_size:
+			var seat := Vector3(
+				x * const_data.TABLE_SPACING - origin,
+				0.0,
+				z * const_data.TABLE_SPACING - origin
+			)
+			if x == player_x and z == player_z:
+				_spawn_player_at(seat)
+			else:
+				_spawn_student_at(seat)
+
+
+func _spawn_player_at(seat: Vector3) -> void:
+	player = PLAYER_SCENE.instantiate() as Player
+	player.const_data = const_data
+	player.position = seat
 	add_child(player)
 	player_spawned.emit(player)
+
+
+func _spawn_student_at(seat: Vector3) -> void:
+	var student := STUDENT_SCENE.instantiate() as Student
+	student.WIDTH = const_data.STUDENT_WIDTH
+	student.HEIGHT = const_data.STUDENT_HEIGHT
+	student.LENGTH = const_data.STUDENT_LENGTH
+	student.const_data = const_data
+	student.position = seat
+	add_child(student)
+	students.append(student)
 
 
 func _spawn_teacher() -> void:
@@ -76,7 +102,7 @@ func _spawn_teacher() -> void:
 	teacher = TEACHER_SCENE.instantiate() as Teacher
 	teacher.position = const_data.TEACHER_SPAWN_POSITION
 	add_child(teacher)
-	teacher.start_moving(tables)
+	teacher.start_moving(students)
 	var vision := teacher.get_node("TeacherVision") as TeacherVision
 	if vision != null:
 		vision.setup_vision(player)
@@ -84,56 +110,17 @@ func _spawn_teacher() -> void:
 	teacher_spawned.emit(teacher)
 
 
-func _spawn_tables() -> void:
-	_clear_tables()
-	var origin := (const_data.TABLE_GRID_SIZE - 1) * const_data.TABLE_SPACING * 0.5
-	for x in const_data.TABLE_GRID_SIZE:
-		for z in const_data.TABLE_GRID_SIZE:
-			var table := TABLE_SCENE.instantiate() as Table
-			table.WIDTH = const_data.TABLE_WIDTH
-			table.HEIGHT = const_data.TABLE_HEIGHT
-			table.LENGTH = const_data.TABLE_LENGTH
-			table.position = Vector3(
-				x * const_data.TABLE_SPACING - origin,
-				0.0,
-				z * const_data.TABLE_SPACING - origin
-			)
-			add_child(table)
-			tables.append(table)
-
-
-func _spawn_students() -> void:
-	_clear_students()
-	for table in tables:
-		var student := STUDENT_SCENE.instantiate() as Student
-		student.WIDTH = const_data.STUDENT_WIDTH
-		student.HEIGHT = const_data.STUDENT_HEIGHT
-		student.LENGTH = const_data.STUDENT_LENGTH
-		student.position = Vector3(
-			table.position.x,
-			0.0,
-			table.position.z + table.LENGTH * 0.5 + const_data.STUDENT_LENGTH * 0.5 + const_data.STUDENT_TABLE_GAP
-		)
-		add_child(student)
-		table.student = student
-		students.append(student)
-
-
-func _clear_tables() -> void:
-	for table in tables:
-		if is_instance_valid(table):
-			table.queue_free()
-	tables.clear()
-
-
 func _clear_students() -> void:
-	for table in tables:
-		if is_instance_valid(table):
-			table.student = null
 	for student in students:
 		if is_instance_valid(student):
 			student.queue_free()
 	students.clear()
+
+
+func _clear_player() -> void:
+	if player != null and is_instance_valid(player):
+		player.queue_free()
+	player = null
 
 
 func _setup_timer() -> void:

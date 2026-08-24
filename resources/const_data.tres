@@ -7,3 +7,5 @@ script = ExtResource("1_const_data")
 TABLE_GRID_SIZE = 8
 TABLE_SPACING = 4.0
 TEACHER_SPAWN_POSITION = Vector3(10, 0, -8)
+PAPER_WIDTH = 0.4
+PAPER_LENGTH = 0.8
