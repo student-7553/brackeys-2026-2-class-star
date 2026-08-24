@@ -74,11 +74,14 @@ func _pick_next_table() -> void:
 
 func _beside_table(table: Table) -> Vector3:
 	var x_sign := 1.0 if randf() < 0.5 else -1.0
-	var z_sign := 1.0 if randf() < 0.5 else -1.0
 	var pos := table.global_position
 	pos.x += x_sign * (table.WIDTH * 0.5 + STAND_OFFSET)
-	pos.z += z_sign * (table.LENGTH * 0.5 + STAND_OFFSET)
 	pos.y = global_position.y
+	# Stay in the side aisle or in front of the desk — never behind the student.
+	if randf() < 0.5:
+		pos.z = table.global_position.z
+	else:
+		pos.z = table.global_position.z - (table.LENGTH * 0.5 + STAND_OFFSET)
 	return pos
 
 
@@ -92,11 +95,13 @@ func _aisle_path(dest: Vector3) -> Array[Vector3]:
 	var intersection := Vector3(aisle_x, y, aisle_z)
 
 	if _xz_distance(global_position, intersection) > ARRIVAL_DISTANCE:
-		if absf(global_position.x - aisle_x) >= absf(global_position.z - aisle_z):
+		var on_z_aisle := absf(global_position.z - aisle_z) <= ARRIVAL_DISTANCE
+		if on_z_aisle:
 			var via := Vector3(aisle_x, y, global_position.z)
 			if _xz_distance(global_position, via) > ARRIVAL_DISTANCE:
 				path.append(via)
 		else:
+			# Reach a Z-aisle along current X first so we don't cut across a student row.
 			var via := Vector3(global_position.x, y, aisle_z)
 			if _xz_distance(global_position, via) > ARRIVAL_DISTANCE:
 				path.append(via)
@@ -126,14 +131,23 @@ func _nearest_aisle(value: float, along_x: bool) -> float:
 	for table in _tables:
 		if table == null or not is_instance_valid(table):
 			continue
-		var center := table.global_position.x if along_x else table.global_position.z
-		var half := (table.WIDTH if along_x else table.LENGTH) * 0.5
-		for candidate in [center + half + STAND_OFFSET, center - half - STAND_OFFSET]:
+		for candidate in _aisle_candidates(table, along_x):
 			var distance := absf(candidate - value)
 			if distance < best_distance:
 				best_distance = distance
 				best = candidate
 	return best
+
+
+func _aisle_candidates(table: Table, along_x: bool) -> Array[float]:
+	var center := table.global_position.x if along_x else table.global_position.z
+	var half := (table.WIDTH if along_x else table.LENGTH) * 0.5
+	var plus := center + half + STAND_OFFSET
+	var minus := center - half - STAND_OFFSET
+	if not along_x:
+		var seated := table.student
+		plus = seated.global_position.z + seated.LENGTH * 0.5 + STAND_OFFSET
+	return [plus, minus]
 
 
 func _xz_distance(a: Vector3, b: Vector3) -> float:

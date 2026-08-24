@@ -1,23 +1,21 @@
 @tool
-class_name Table
+class_name Student
 extends StaticBody3D
 
-@export var WIDTH := 1.5:
+@export var WIDTH := 0.6:
 	set(value):
 		WIDTH = maxf(value, 0.01)
 		_apply_size()
 
-@export var HEIGHT := 0.75:
+@export var HEIGHT := 1.1:
 	set(value):
 		HEIGHT = maxf(value, 0.01)
 		_apply_size()
 
-@export var LENGTH := 1.5:
+@export var LENGTH := 0.45:
 	set(value):
 		LENGTH = maxf(value, 0.01)
 		_apply_size()
-
-var student: Student
 
 @onready var _mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var _collision_shape: CollisionShape3D = $CollisionShape3D

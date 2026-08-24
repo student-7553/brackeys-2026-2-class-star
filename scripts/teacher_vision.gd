@@ -9,7 +9,6 @@ signal player_spotted(player: Node3D)
 @export var cone_color := Color(1.0, 0.12, 0.1, 0.28)
 
 var player: Node3D
-var game_manager: GameManager
 
 var _has_spotted := false
 var _cone: MeshInstance3D
@@ -19,9 +18,8 @@ func _ready() -> void:
 	_build_cone()
 
 
-func setup(watched_player: Node3D, manager: GameManager) -> void:
+func setup_vision(watched_player: Node3D) -> void:
 	player = watched_player
-	game_manager = manager
 	_has_spotted = false
 
 
@@ -37,8 +35,6 @@ func _physics_process(_delta: float) -> void:
 
 	_has_spotted = true
 	player_spotted.emit(player)
-	if game_manager != null:
-		game_manager.on_player_spotted()
 
 
 func _is_player_in_cone() -> bool:
