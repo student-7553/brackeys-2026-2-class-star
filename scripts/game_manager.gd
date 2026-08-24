@@ -9,12 +9,15 @@ signal game_stopped
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
 const TEACHER_SCENE := preload("res://scenes/teacher.tscn")
 const STUDENT_SCENE := preload("res://scenes/student.tscn")
+const EXAM_QUESTIONS_PATH := "res://questions/exam_questions.json"
 
 @export var const_data: ConstData
 
 var player: Player
 var teacher: Teacher
 var students: Array[Student] = []
+var exam_questions: Dictionary = {}
+var selected_questions: Array[Dictionary] = []
 var elapsed_time := 0.0
 var is_running := false
 
@@ -23,6 +26,7 @@ var _time_label: Label
 
 
 func _ready() -> void:
+	_load_exam_questions()
 	_setup_hud()
 	_setup_timer()
 	start_game()
@@ -31,6 +35,7 @@ func _ready() -> void:
 func start_game() -> void:
 	elapsed_time = const_data.COUNTDOWN
 	is_running = true
+	_pick_questions()
 	_spawn_classroom()
 	_spawn_teacher()
 	_timer.start()
@@ -121,6 +126,43 @@ func _clear_player() -> void:
 	if player != null and is_instance_valid(player):
 		player.queue_free()
 	player = null
+
+
+func _load_exam_questions() -> void:
+	exam_questions.clear()
+	var file := FileAccess.open(EXAM_QUESTIONS_PATH, FileAccess.READ)
+	if file == null:
+		push_error("Could not open exam questions at %s" % EXAM_QUESTIONS_PATH)
+		return
+
+	var data: Variant = JSON.parse_string(file.get_as_text())
+	if typeof(data) != TYPE_DICTIONARY:
+		push_error("Exam questions file is not a JSON object")
+		return
+
+	exam_questions = data
+
+
+func _pick_questions() -> void:
+	selected_questions.clear()
+	var pool: Array[Dictionary] = []
+	for questions: Variant in exam_questions.values():
+		if typeof(questions) != TYPE_ARRAY:
+			continue
+		for question: Variant in questions:
+			if typeof(question) != TYPE_DICTIONARY:
+				continue
+			var source := question as Dictionary
+			pool.append({
+				"prompt": source.get("prompt", ""),
+				"options": source.get("options", []),
+				"correct_option_id": source.get("correct_option_id", ""),
+			})
+
+	pool.shuffle()
+	var count := mini(const_data.QUESTION_COUNT, pool.size())
+	for i in count:
+		selected_questions.append(pool[i])
 
 
 func _setup_timer() -> void:

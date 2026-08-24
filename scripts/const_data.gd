@@ -16,3 +16,4 @@ extends Resource
 @export var PAPER_LENGTH := 0.297
 @export var PAPER_INTERACT_DISTANCE := 2.0
 @export var COUNTDOWN := 120.0
+@export var QUESTION_COUNT := 10
