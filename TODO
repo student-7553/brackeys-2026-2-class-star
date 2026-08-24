@@ -8,7 +8,13 @@ TODO
 [] Have "stuff"? in the main player's paper
 [] Make main player's paper interactable (all will be multiple choice question)
 [] Handle the interaction with the Student
+[] Make player's desk area safe from being spotted
 
 [] Add Saumi's models into the game
 [] When caught by the teacher, teleport the student to the spawn and decrease timer.
 [] Handle when the timer reaches 0
+
+# Polish
+- Better models
+- Better lighting
+
