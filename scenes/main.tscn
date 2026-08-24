@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://cxh2ict3vqu8v" path="res://scripts/game_manager.gd" id="1_game_manager"]
 [ext_resource type="Shader" uid="uid://csmpyebahg0rg" path="res://shaders/ground_grid.gdshader" id="2_grid"]
 [ext_resource type="Resource" uid="uid://bedaw6ylnujwl" path="res://resources/const_data.tres" id="3_const_data"]
-[ext_resource type="Script" path="res://scripts/input_manager.gd" id="4_input_manager"]
+[ext_resource type="Script" uid="uid://cedr8fj2c4gql" path="res://scripts/input_manager.gd" id="4_input_manager"]
+[ext_resource type="PackedScene" uid="uid://df0owju4p78or" path="res://models/Classroom.glb" id="5_tbgi4"]
 
 [sub_resource type="Environment" id="Environment_world"]
 background_mode = 1
@@ -32,7 +33,7 @@ size = Vector3(100, 1, 100)
 
 [node name="Main" type="Node3D" unique_id=1774947516]
 
-[node name="InputManager" type="Node" parent="."]
+[node name="InputManager" type="Node" parent="." unique_id=164471278]
 script = ExtResource("4_input_manager")
 
 [node name="GameManager" type="Node" parent="." unique_id=1222027095]
@@ -54,3 +55,6 @@ mesh = SubResource("PlaneMesh_ground")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1473388302]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_ground")
+
+[node name="Classroom" parent="." unique_id=1648640669 instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7465754, 0, -2.1000767)
