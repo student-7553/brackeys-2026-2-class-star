@@ -1,0 +1,1694 @@
+  {
+    "cs": [
+      {
+        "id": "q1",
+        "prompt": "Which complexity class contains decision problems solvable by a nondeterministic Turing machine in polynomial space, and is known to equal its own complement (NPSPACE = PSPACE)?",
+        "options": [
+          {
+            "id": "a",
+            "text": "PSPACE"
+          },
+          {
+            "id": "b",
+            "text": "NP"
+          },
+          {
+            "id": "c",
+            "text": "EXPTIME"
+          },
+          {
+            "id": "d",
+            "text": "co-NP"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "By Savitch's theorem, NPSPACE = PSPACE, and PSPACE is closed under complement since it's defined by space bounds, which are symmetric under determinism/nondeterminism at that scale."
+      },
+      {
+        "id": "q2",
+        "prompt": "In the context of distributed systems, the CAP theorem states that a distributed data store can provide at most two of three guarantees. Which set correctly lists these guarantees?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Consistency, Availability, Partition tolerance"
+          },
+          {
+            "id": "b",
+            "text": "Concurrency, Atomicity, Persistence"
+          },
+          {
+            "id": "c",
+            "text": "Consensus, Atomicity, Parallelism"
+          },
+          {
+            "id": "d",
+            "text": "Consistency, Atomicity, Performance"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "CAP stands for Consistency, Availability, and Partition tolerance; the theorem states a distributed system can only guarantee two of these simultaneously during a network partition."
+      },
+      {
+        "id": "q3",
+        "prompt": "Which scheduling algorithm minimizes the average waiting time for a given set of processes with known burst times, assuming no preemption?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Shortest Job First (SJF)"
+          },
+          {
+            "id": "b",
+            "text": "First Come First Served (FCFS)"
+          },
+          {
+            "id": "c",
+            "text": "Round Robin"
+          },
+          {
+            "id": "d",
+            "text": "Priority Scheduling (non-preemptive, arbitrary priorities)"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "SJF is provably optimal for minimizing average waiting time when all burst times are known in advance and processes are scheduled non-preemptively."
+      },
+      {
+        "id": "q4",
+        "prompt": "In machine learning theory, what does the Vapnik-Chervonenkis (VC) dimension of a hypothesis class primarily measure?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The capacity of the class to shatter sets of points"
+          },
+          {
+            "id": "b",
+            "text": "The number of training examples required for gradient descent to converge"
+          },
+          {
+            "id": "c",
+            "text": "The computational time complexity of training the model"
+          },
+          {
+            "id": "d",
+            "text": "The number of parameters in the model"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "VC dimension measures the largest set of points that a hypothesis class can shatter (label in all possible ways), which relates to the model's capacity and generalization bounds, not directly to parameter count or training time."
+      },
+      {
+        "id": "q5",
+        "prompt": "Which isolation level in database transactions prevents dirty reads and non-repeatable reads, but still permits phantom reads?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Repeatable Read"
+          },
+          {
+            "id": "b",
+            "text": "Read Committed"
+          },
+          {
+            "id": "c",
+            "text": "Read Uncommitted"
+          },
+          {
+            "id": "d",
+            "text": "Serializable"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Repeatable Read guarantees that once a row is read, subsequent reads of that row within the transaction return the same data, preventing dirty and non-repeatable reads, but new rows matching a query (phantoms) can still appear."
+      },
+      {
+        "id": "q6",
+        "prompt": "In computer architecture, what is the primary purpose of a Translation Lookaside Buffer (TLB)?",
+        "options": [
+          {
+            "id": "a",
+            "text": "To cache recent virtual-to-physical address translations"
+          },
+          {
+            "id": "b",
+            "text": "To cache recently executed instructions for reuse"
+          },
+          {
+            "id": "c",
+            "text": "To store branch prediction history"
+          },
+          {
+            "id": "d",
+            "text": "To buffer data between the CPU and disk storage"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "A TLB is a specialized cache that stores recent translations of virtual memory addresses to physical memory addresses, avoiding a full page-table walk on every memory access."
+      },
+      {
+        "id": "q7",
+        "prompt": "Which of the following problems is known to be NP-complete?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Boolean satisfiability (SAT)"
+          },
+          {
+            "id": "b",
+            "text": "Finding the shortest path in a weighted graph with non-negative edges"
+          },
+          {
+            "id": "c",
+            "text": "Determining if a number is prime"
+          },
+          {
+            "id": "d",
+            "text": "Sorting an array of integers"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "SAT was the first problem proven NP-complete via the Cook-Levin theorem; shortest path, primality testing, and sorting all have known polynomial-time algorithms."
+      },
+      {
+        "id": "q8",
+        "prompt": "In TCP congestion control, what mechanism is triggered when three duplicate ACKs are received, allowing the sender to retransmit a lost segment without waiting for a timeout?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Fast retransmit"
+          },
+          {
+            "id": "b",
+            "text": "Slow start"
+          },
+          {
+            "id": "c",
+            "text": "Nagle's algorithm"
+          },
+          {
+            "id": "d",
+            "text": "Exponential backoff"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Fast retransmit allows a TCP sender to infer packet loss from receiving three duplicate ACKs and retransmit the missing segment immediately, rather than waiting for the retransmission timer to expire."
+      },
+      {
+        "id": "q9",
+        "prompt": "Which type system property guarantees that a well-typed program, when it terminates, will not encounter a 'stuck' state such as applying a function to arguments of the wrong type?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Type safety (progress and preservation)"
+          },
+          {
+            "id": "b",
+            "text": "Type inference"
+          },
+          {
+            "id": "c",
+            "text": "Parametric polymorphism"
+          },
+          {
+            "id": "d",
+            "text": "Structural typing"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Type safety, formally established through the progress and preservation theorems, ensures well-typed programs never reach a stuck state during evaluation."
+      },
+      {
+        "id": "q10",
+        "prompt": "In amortized analysis, what does the potential method primarily use to bound the total cost of a sequence of operations?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A potential function that accounts for stored 'credit' representing future savings"
+          },
+          {
+            "id": "b",
+            "text": "The worst-case cost of the single most expensive operation, multiplied by n"
+          },
+          {
+            "id": "c",
+            "text": "A probabilistic average over random inputs"
+          },
+          {
+            "id": "d",
+            "text": "The average-case time complexity derived from recurrence relations"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The potential method assigns a potential function to the data structure's state; the amortized cost of an operation is its actual cost plus the change in potential, effectively banking credit from cheap operations to pay for expensive ones."
+      }
+    ],
+    "physics": [
+      {
+        "id": "q1",
+        "prompt": "In quantum mechanics, which theorem states that no two non-commuting observables can be simultaneously measured with arbitrary precision?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Heisenberg uncertainty principle"
+          },
+          {
+            "id": "b",
+            "text": "No-cloning theorem"
+          },
+          {
+            "id": "c",
+            "text": "Ehrenfest theorem"
+          },
+          {
+            "id": "d",
+            "text": "Bell's theorem"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Heisenberg uncertainty principle states that the product of the uncertainties of two non-commuting observables (like position and momentum) is bounded below by a value proportional to Planck's constant, arising directly from their commutator."
+      },
+      {
+        "id": "q2",
+        "prompt": "In classical electrodynamics, what does the Poynting vector represent?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The directional energy flux of an electromagnetic field"
+          },
+          {
+            "id": "b",
+            "text": "The electric field strength at a point in space"
+          },
+          {
+            "id": "c",
+            "text": "The magnetic dipole moment of a current loop"
+          },
+          {
+            "id": "d",
+            "text": "The charge density distribution in a conductor"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Poynting vector, S = (1/μ₀) E × B, gives the magnitude and direction of the rate of energy transfer per unit area carried by an electromagnetic field."
+      },
+      {
+        "id": "q3",
+        "prompt": "In statistical mechanics, which distribution describes the occupation statistics of identical fermions obeying the Pauli exclusion principle?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Fermi-Dirac distribution"
+          },
+          {
+            "id": "b",
+            "text": "Bose-Einstein distribution"
+          },
+          {
+            "id": "c",
+            "text": "Maxwell-Boltzmann distribution"
+          },
+          {
+            "id": "d",
+            "text": "Planck distribution"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Fermi-Dirac distribution governs the average occupation number of quantum states by indistinguishable fermions, enforcing at most one particle per state due to the Pauli exclusion principle."
+      },
+      {
+        "id": "q4",
+        "prompt": "In general relativity, what does the Einstein field equation fundamentally relate?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Spacetime curvature to the local energy-momentum distribution"
+          },
+          {
+            "id": "b",
+            "text": "The speed of light to the permittivity and permeability of free space"
+          },
+          {
+            "id": "c",
+            "text": "Gravitational potential to mass density via Poisson's equation"
+          },
+          {
+            "id": "d",
+            "text": "Proper time to coordinate time via the Lorentz factor"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Einstein field equations, Gμν = 8πG/c⁴ Tμν, relate the curvature of spacetime (via the Einstein tensor) to the distribution of mass and energy (via the stress-energy tensor)."
+      },
+      {
+        "id": "q5",
+        "prompt": "In quantum field theory, what does 'renormalization' primarily address?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Divergent integrals that arise in perturbative calculations of physical quantities"
+          },
+          {
+            "id": "b",
+            "text": "The normalization of a single-particle wavefunction to unit probability"
+          },
+          {
+            "id": "c",
+            "text": "The quantization of a classical field into discrete energy levels"
+          },
+          {
+            "id": "d",
+            "text": "The breaking of gauge symmetry in the early universe"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Renormalization is a set of techniques used to absorb the divergences that appear in loop-level perturbative calculations into redefinitions of physical parameters like mass and charge, yielding finite, measurable predictions."
+      },
+      {
+        "id": "q6",
+        "prompt": "Which experiment provided the first direct evidence for the quantization of angular momentum (spin) in atoms?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Stern-Gerlach experiment"
+          },
+          {
+            "id": "b",
+            "text": "Michelson-Morley experiment"
+          },
+          {
+            "id": "c",
+            "text": "Davisson-Germer experiment"
+          },
+          {
+            "id": "d",
+            "text": "Franck-Hertz experiment"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Stern-Gerlach experiment passed silver atoms through an inhomogeneous magnetic field and observed discrete deflection into two beams, demonstrating that atomic angular momentum (spin) is quantized rather than continuous."
+      },
+      {
+        "id": "q7",
+        "prompt": "In condensed matter physics, what physical phenomenon does the BCS theory explain?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Superconductivity via Cooper pairing of electrons"
+          },
+          {
+            "id": "b",
+            "text": "Ferromagnetism via spontaneous spin alignment"
+          },
+          {
+            "id": "c",
+            "text": "Semiconductor band gaps via lattice periodicity"
+          },
+          {
+            "id": "d",
+            "text": "Superfluidity in liquid helium-4 via Bose condensation"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "BCS (Bardeen-Cooper-Schrieffer) theory explains conventional superconductivity as arising from electrons forming bound pairs (Cooper pairs) mediated by phonon interactions, which condense into a coherent macroscopic quantum state."
+      },
+      {
+        "id": "q8",
+        "prompt": "In particle physics, which mechanism explains how gauge bosons like the W and Z acquire mass in the Standard Model?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The Higgs mechanism via spontaneous symmetry breaking"
+          },
+          {
+            "id": "b",
+            "text": "Quark confinement via asymptotic freedom"
+          },
+          {
+            "id": "c",
+            "text": "CP violation in weak interactions"
+          },
+          {
+            "id": "d",
+            "text": "Neutrino oscillation via flavor mixing"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Higgs mechanism generates mass for the W and Z bosons through spontaneous breaking of electroweak gauge symmetry, where the gauge fields acquire mass by interacting with the nonzero vacuum expectation value of the Higgs field."
+      },
+      {
+        "id": "q9",
+        "prompt": "In thermodynamics and statistical mechanics, what does the partition function Z primarily encode for a system in the canonical ensemble?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A weighted sum over all microstates from which all thermodynamic quantities can be derived"
+          },
+          {
+            "id": "b",
+            "text": "The total number of accessible microstates at fixed energy"
+          },
+          {
+            "id": "c",
+            "text": "The probability that the system is in its ground state"
+          },
+          {
+            "id": "d",
+            "text": "The rate of entropy production in an irreversible process"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The canonical partition function Z = Σ e^(-βEᵢ) sums Boltzmann factors over all microstates, and quantities like free energy, entropy, and average energy can all be derived from its derivatives with respect to temperature."
+      },
+      {
+        "id": "q10",
+        "prompt": "In quantum mechanics, what does Bell's theorem demonstrate about local hidden variable theories?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They cannot reproduce all the statistical predictions of quantum entanglement"
+          },
+          {
+            "id": "b",
+            "text": "They are mathematically equivalent to the Copenhagen interpretation"
+          },
+          {
+            "id": "c",
+            "text": "They correctly predict wavefunction collapse upon measurement"
+          },
+          {
+            "id": "d",
+            "text": "They violate conservation of energy in entangled systems"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Bell's theorem shows that any local hidden variable theory must satisfy inequalities (Bell inequalities) that are violated by the correlations predicted by quantum mechanics for entangled particles, a violation later confirmed experimentally."
+      }
+    ],
+    "history": [
+      {
+        "id": "q1",
+        "prompt": "The Conflict of the Orders in the early Roman Republic culminated in which piece of legislation opening the consulship to plebeians?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The Licinio-Sextian rogations of 367 BC"
+          },
+          {
+            "id": "b",
+            "text": "The Lex Hortensia of 287 BC"
+          },
+          {
+            "id": "c",
+            "text": "The Twelve Tables of 451-450 BC"
+          },
+          {
+            "id": "d",
+            "text": "The Lex Canuleia of 445 BC"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Licinio-Sextian rogations mandated that at least one consul each year could be plebeian, breaking the patrician monopoly on the highest magistracy. The Lex Hortensia later made plebiscites binding on all citizens, and the Lex Canuleia legalized patrician-plebeian intermarriage."
+      },
+      {
+        "id": "q2",
+        "prompt": "In 133 BC, Tiberius Gracchus provoked constitutional crisis primarily by which action?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Deposing a fellow tribune who vetoed his land reform bill"
+          },
+          {
+            "id": "b",
+            "text": "Marching an army on Rome to seize the consulship"
+          },
+          {
+            "id": "c",
+            "text": "Abolishing the Senate's control over the treasury"
+          },
+          {
+            "id": "d",
+            "text": "Granting full citizenship to all Italian allies"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Tiberius had the assembly depose the tribune Marcus Octavius for obstructing his agrarian law, an unprecedented act that his opponents treated as tyrannical and that helped legitimize political violence in Republican politics."
+      },
+      {
+        "id": "q3",
+        "prompt": "The Augustan settlement of 27 and 23 BC secured Augustus's power chiefly through which combination of formal powers?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Tribunician power and proconsular imperium over key provinces"
+          },
+          {
+            "id": "b",
+            "text": "A perpetual dictatorship modeled on that of Julius Caesar"
+          },
+          {
+            "id": "c",
+            "text": "Hereditary kingship confirmed by the Senate"
+          },
+          {
+            "id": "d",
+            "text": "The office of pontifex maximus combined with the censorship"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Augustus avoided the title of king or dictator, instead accumulating tribunicia potestas (giving him legislative initiative and personal inviolability) and imperium proconsulare maius over the provinces where most legions were stationed."
+      },
+      {
+        "id": "q4",
+        "prompt": "The Constitutio Antoniniana of AD 212, issued by Caracalla, had what principal effect?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It extended Roman citizenship to nearly all free inhabitants of the Empire"
+          },
+          {
+            "id": "b",
+            "text": "It established Christianity as a permitted religion"
+          },
+          {
+            "id": "c",
+            "text": "It divided the Empire into eastern and western administrations"
+          },
+          {
+            "id": "d",
+            "text": "It fixed maximum prices for goods across the Empire"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Constitutio Antoniniana granted citizenship to virtually all free inhabitants of the Empire, a change scholars have linked variously to tax revenue, legal uniformity, and the erosion of citizenship as a mark of distinction."
+      },
+      {
+        "id": "q5",
+        "prompt": "Diocletian's administrative reforms of the late third century are best characterized by which structural innovation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The Tetrarchy, dividing rule among two Augusti and two Caesares"
+          },
+          {
+            "id": "b",
+            "text": "The restoration of the Republic under senatorial supervision"
+          },
+          {
+            "id": "c",
+            "text": "The permanent transfer of the capital to Constantinople"
+          },
+          {
+            "id": "d",
+            "text": "The abolition of the provincial system in favor of client kingdoms"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Diocletian established the Tetrarchy, splitting imperial authority among four rulers to manage frontier defense and succession, while also multiplying provinces and grouping them into dioceses."
+      },
+      {
+        "id": "q6",
+        "prompt": "Which source problem most complicates modern reconstruction of the Roman monarchy and early Republic?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The surviving narratives were written centuries later and shaped by annalistic elaboration and family tradition"
+          },
+          {
+            "id": "b",
+            "text": "No written Latin existed before the second century BC"
+          },
+          {
+            "id": "c",
+            "text": "All early Roman records were written in Etruscan and remain untranslated"
+          },
+          {
+            "id": "d",
+            "text": "Archaeological evidence for the period is entirely absent"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Livy and Dionysius of Halicarnassus wrote in the late first century BC, drawing on annalists whose accounts were inflated by aristocratic family traditions, antiquarian reconstruction, and Greek historiographical models, so archaeology often serves as an independent check."
+      },
+      {
+        "id": "q7",
+        "prompt": "The Corpus Juris Civilis, the great codification of Roman law, was compiled under which emperor?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Justinian I"
+          },
+          {
+            "id": "b",
+            "text": "Theodosius II"
+          },
+          {
+            "id": "c",
+            "text": "Hadrian"
+          },
+          {
+            "id": "d",
+            "text": "Constantine I"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Justinian's commission under Tribonian produced the Codex, Digest, Institutes, and Novels in the sixth century AD; the earlier Theodosian Code of 438 was a narrower compilation of imperial constitutions, and Hadrian oversaw the consolidation of the praetor's edict."
+      },
+      {
+        "id": "q8",
+        "prompt": "The Roman practice of evocatio, as attested in accounts of sieges such as Veii and Carthage, involved what?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Ritually inviting an enemy city's tutelary deity to abandon it and receive worship at Rome"
+          },
+          {
+            "id": "b",
+            "text": "Summoning citizen levies for emergency military service"
+          },
+          {
+            "id": "c",
+            "text": "Recalling a magistrate from a province to face prosecution"
+          },
+          {
+            "id": "d",
+            "text": "Formally declaring war through the fetial priests"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Evocatio was a religious ritual by which Roman commanders called a besieged city's protective deity out of that city with promises of cult at Rome, reflecting the Roman inclination to incorporate rather than antagonize foreign gods. The fetial priests handled war declarations through a separate rite."
+      },
+      {
+        "id": "q9",
+        "prompt": "Modern scholarship on the third-century crisis has increasingly emphasized which methodological revision?",
+        "options": [
+          {
+            "id": "a",
+            "text": "That the narrative of universal collapse reflects gaps in the sources and regional variation, with some provinces showing continuity or growth"
+          },
+          {
+            "id": "b",
+            "text": "That the crisis was confined entirely to the reign of a single emperor"
+          },
+          {
+            "id": "c",
+            "text": "That no emperors were killed by their own troops during the period"
+          },
+          {
+            "id": "d",
+            "text": "That the period is fully documented by contemporary narrative historians"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Scholars now stress that the third century is poorly served by narrative sources, and that numismatic, papyrological, and archaeological evidence reveals substantial regional variation, prompting caution about a single Empire-wide story of collapse."
+      },
+      {
+        "id": "q10",
+        "prompt": "In debates over the end of the Western Roman Empire, the 'transformation' school associated with scholars such as Peter Brown argues principally that:",
+        "options": [
+          {
+            "id": "a",
+            "text": "Late antiquity is better understood as gradual cultural and institutional change than as catastrophic decline"
+          },
+          {
+            "id": "b",
+            "text": "The Western Empire never actually ceased to exist in any meaningful sense"
+          },
+          {
+            "id": "c",
+            "text": "Barbarian migrations were entirely fictional inventions of later chroniclers"
+          },
+          {
+            "id": "d",
+            "text": "Economic decline began only after the reign of Justinian"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The transformation approach reframes late antiquity as a period of accommodation, religious change, and continuity alongside disruption, in contrast to catastrophist accounts such as Bryan Ward-Perkins's, which stress measurable material decline."
+      }
+    ],
+    "math": [
+      {
+        "id": "q1",
+        "prompt": "In real analysis, which theorem guarantees that a sequence of measurable functions dominated by an integrable function permits interchanging limit and integral?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Dominated Convergence Theorem"
+          },
+          {
+            "id": "b",
+            "text": "Fubini's Theorem"
+          },
+          {
+            "id": "c",
+            "text": "Mean Value Theorem"
+          },
+          {
+            "id": "d",
+            "text": "Heine-Borel Theorem"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Dominated Convergence Theorem states that if fₙ → f pointwise almost everywhere and |fₙ| ≤ g for some integrable g, then the limit and the integral may be exchanged."
+      },
+      {
+        "id": "q2",
+        "prompt": "In group theory, what do the Sylow theorems primarily describe about a finite group G of order n?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The existence and number of subgroups whose order is a prime power dividing n"
+          },
+          {
+            "id": "b",
+            "text": "The conditions under which G is guaranteed to be abelian"
+          },
+          {
+            "id": "c",
+            "text": "The classification of all simple groups of order n"
+          },
+          {
+            "id": "d",
+            "text": "The decomposition of G into a direct product of cyclic groups"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Sylow theorems guarantee the existence of Sylow p-subgroups (of order equal to the highest power of p dividing |G|), establish that they are all conjugate, and constrain their number modulo p."
+      },
+      {
+        "id": "q3",
+        "prompt": "In complex analysis, what does Cauchy's integral theorem state about a function holomorphic on a simply connected domain?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Its contour integral around any closed curve in the domain is zero"
+          },
+          {
+            "id": "b",
+            "text": "It must have at least one pole inside every closed curve"
+          },
+          {
+            "id": "c",
+            "text": "It is necessarily bounded on the entire domain"
+          },
+          {
+            "id": "d",
+            "text": "Its Taylor series diverges outside the unit disk"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Cauchy's integral theorem states that if f is holomorphic on a simply connected domain, then the integral of f along any closed contour within that domain vanishes."
+      },
+      {
+        "id": "q4",
+        "prompt": "In point-set topology, the Heine-Borel theorem characterizes compact subsets of Rⁿ as exactly those that are:",
+        "options": [
+          {
+            "id": "a",
+            "text": "Closed and bounded"
+          },
+          {
+            "id": "b",
+            "text": "Open and connected"
+          },
+          {
+            "id": "c",
+            "text": "Complete and separable"
+          },
+          {
+            "id": "d",
+            "text": "Dense and countable"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Heine-Borel theorem states that a subset of Euclidean space Rⁿ is compact if and only if it is both closed and bounded; this equivalence fails in general metric spaces."
+      },
+      {
+        "id": "q5",
+        "prompt": "In linear algebra, what does the spectral theorem guarantee for a real symmetric matrix?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is orthogonally diagonalizable with real eigenvalues"
+          },
+          {
+            "id": "b",
+            "text": "It is always invertible with positive determinant"
+          },
+          {
+            "id": "c",
+            "text": "Its eigenvalues are all distinct"
+          },
+          {
+            "id": "d",
+            "text": "It has no nontrivial null space"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The spectral theorem states that every real symmetric matrix can be written as QΛQᵀ where Q is orthogonal and Λ is diagonal with real entries, meaning it has an orthonormal basis of eigenvectors."
+      },
+      {
+        "id": "q6",
+        "prompt": "In measure theory, which property distinguishes the Lebesgue integral from the Riemann integral for a bounded function on a bounded interval?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The Lebesgue integral partitions the range rather than the domain, integrating a strictly larger class of functions"
+          },
+          {
+            "id": "b",
+            "text": "The Lebesgue integral requires the function to be continuous everywhere"
+          },
+          {
+            "id": "c",
+            "text": "The Riemann integral always yields a larger value when both exist"
+          },
+          {
+            "id": "d",
+            "text": "The Lebesgue integral is only defined for nonnegative functions"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Lebesgue integral is constructed by partitioning the range of the function and measuring preimages, which allows it to integrate functions (such as the indicator of the rationals) that are not Riemann integrable; whenever the Riemann integral exists, the two agree."
+      },
+      {
+        "id": "q7",
+        "prompt": "In Galois theory, a polynomial equation is solvable by radicals precisely when its Galois group is:",
+        "options": [
+          {
+            "id": "a",
+            "text": "A solvable group"
+          },
+          {
+            "id": "b",
+            "text": "A simple group"
+          },
+          {
+            "id": "c",
+            "text": "An abelian group"
+          },
+          {
+            "id": "d",
+            "text": "A cyclic group of prime order"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Galois's criterion states that a polynomial is solvable by radicals if and only if its Galois group is solvable; the non-solvability of S₅ is why the general quintic has no radical solution."
+      },
+      {
+        "id": "q8",
+        "prompt": "In functional analysis, what does the Banach fixed-point theorem guarantee for a contraction mapping on a complete metric space?",
+        "options": [
+          {
+            "id": "a",
+            "text": "There exists a unique fixed point, reachable by iterating the map from any starting point"
+          },
+          {
+            "id": "b",
+            "text": "There exist infinitely many fixed points forming a closed set"
+          },
+          {
+            "id": "c",
+            "text": "The map is necessarily linear and bounded"
+          },
+          {
+            "id": "d",
+            "text": "The space must be finite-dimensional for a fixed point to exist"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Banach fixed-point (contraction mapping) theorem states that a contraction on a complete metric space has exactly one fixed point, and repeated iteration from any initial point converges to it geometrically."
+      },
+      {
+        "id": "q9",
+        "prompt": "In analytic number theory, the Prime Number Theorem describes the asymptotic behavior of π(x), the number of primes ≤ x, as:",
+        "options": [
+          {
+            "id": "a",
+            "text": "π(x) ~ x / ln(x)"
+          },
+          {
+            "id": "b",
+            "text": "π(x) ~ √x"
+          },
+          {
+            "id": "c",
+            "text": "π(x) ~ ln(x)"
+          },
+          {
+            "id": "d",
+            "text": "π(x) ~ x / e^x"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Prime Number Theorem states that π(x) is asymptotically equal to x/ln(x), meaning the ratio of the two approaches 1 as x grows without bound."
+      },
+      {
+        "id": "q10",
+        "prompt": "In differential geometry, what does the Gauss-Bonnet theorem relate for a compact orientable surface?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The total Gaussian curvature to the surface's Euler characteristic"
+          },
+          {
+            "id": "b",
+            "text": "The surface area to the enclosed volume"
+          },
+          {
+            "id": "c",
+            "text": "Geodesic length to the shortest path in the ambient space"
+          },
+          {
+            "id": "d",
+            "text": "The metric tensor to the Christoffel symbols"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Gauss-Bonnet theorem states that the integral of Gaussian curvature over a compact orientable surface without boundary equals 2π times its Euler characteristic, linking local geometry to global topology."
+      }
+    ],
+    "science": [
+      {
+        "id": "q1",
+        "prompt": "In flavour chemistry, what does the Odour Activity Value (OAV) of a compound represent?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The ratio of a compound's concentration in a matrix to its odour detection threshold"
+          },
+          {
+            "id": "b",
+            "text": "The total mass of volatile compounds extracted per gram of sample"
+          },
+          {
+            "id": "c",
+            "text": "The rate at which a compound partitions into the headspace at equilibrium"
+          },
+          {
+            "id": "d",
+            "text": "The number of olfactory receptor subtypes a compound activates"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "OAV is concentration divided by odour threshold; compounds with OAV greater than 1 are generally considered potential contributors to perceived aroma, though OAV alone ignores mixture interactions and suppression effects."
+      },
+      {
+        "id": "q2",
+        "prompt": "The Strecker degradation, an important pathway in thermally generated flavour, involves the reaction of an amino acid with which class of compound?",
+        "options": [
+          {
+            "id": "a",
+            "text": "α-dicarbonyl compounds formed during Maillard chemistry"
+          },
+          {
+            "id": "b",
+            "text": "Free fatty acids released by lipolysis"
+          },
+          {
+            "id": "c",
+            "text": "Terpene precursors from the mevalonate pathway"
+          },
+          {
+            "id": "d",
+            "text": "Sulfhydryl-bearing polyphenols"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "In Strecker degradation an amino acid reacts with an α-dicarbonyl intermediate from the Maillard reaction, undergoing oxidative decarboxylation and deamination to yield the corresponding Strecker aldehyde plus aminoketones that can cyclise into pyrazines."
+      },
+      {
+        "id": "q3",
+        "prompt": "Which receptor mechanism underlies the perception of umami from L-glutamate in humans?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The T1R1/T1R3 heterodimeric G-protein-coupled receptor, allosterically potentiated by 5'-ribonucleotides"
+          },
+          {
+            "id": "b",
+            "text": "An epithelial sodium channel (ENaC) gated directly by glutamate"
+          },
+          {
+            "id": "c",
+            "text": "The T2R family of bitter receptors acting in reverse"
+          },
+          {
+            "id": "d",
+            "text": "A TRPV1-mediated chemesthetic response"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Umami is transduced principally by the T1R1/T1R3 heterodimer, a class C GPCR whose Venus flytrap domain binds glutamate; IMP and GMP bind an adjacent site and stabilise the closed conformation, producing the well-known synergy between MSG and ribonucleotides."
+      },
+      {
+        "id": "q4",
+        "prompt": "In gas chromatography-olfactometry (GC-O), what is the principal purpose of Aroma Extract Dilution Analysis (AEDA)?",
+        "options": [
+          {
+            "id": "a",
+            "text": "To rank odourants by potency via the highest dilution at which each remains detectable at the sniffing port"
+          },
+          {
+            "id": "b",
+            "text": "To quantify absolute concentrations without the need for internal standards"
+          },
+          {
+            "id": "c",
+            "text": "To separate enantiomers of chiral aroma compounds"
+          },
+          {
+            "id": "d",
+            "text": "To measure the rate of aroma release during mastication"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "AEDA involves serially diluting an aroma extract and sniffing each dilution by GC-O; the flavour dilution (FD) factor is the highest dilution at which an odourant is still perceived, giving a relative ranking of potency in the extract rather than in the food itself."
+      },
+      {
+        "id": "q5",
+        "prompt": "Why do many chiral aroma compounds require enantioselective analysis in authenticity assessment?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Enantiomers can differ markedly in odour quality and threshold, and their ratio can distinguish natural from synthetic origin"
+          },
+          {
+            "id": "b",
+            "text": "Enantiomers have different molecular masses and so co-elute unpredictably"
+          },
+          {
+            "id": "c",
+            "text": "Only one enantiomer of any pair is volatile at ambient temperature"
+          },
+          {
+            "id": "d",
+            "text": "Enantiomeric excess determines the boiling point of the extract"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Because olfactory receptors are themselves chiral, enantiomers such as R- and S-carvone smell distinctly different (spearmint versus caraway); biosynthesis typically favours one enantiomer while chemical synthesis gives racemates, making enantiomeric ratio a useful authenticity marker."
+      },
+      {
+        "id": "q6",
+        "prompt": "In flavour release from a food matrix, what does the air-matrix partition coefficient primarily govern?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The equilibrium distribution of a volatile between the headspace and the food, and thus its available concentration for olfaction"
+          },
+          {
+            "id": "b",
+            "text": "The rate of thermal degradation of the volatile during cooking"
+          },
+          {
+            "id": "c",
+            "text": "The binding affinity of the volatile for its olfactory receptor"
+          },
+          {
+            "id": "d",
+            "text": "The total quantity of volatile synthesised during fermentation"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The partition coefficient describes equilibrium headspace concentration relative to the matrix; hydrophobic volatiles are strongly retained by fat, which is why reducing fat content often unbalances a flavour profile by releasing lipophilic aroma compounds too rapidly."
+      },
+      {
+        "id": "q7",
+        "prompt": "Which analytical approach is most appropriate for tracking aroma release in real time during eating?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Nosespace analysis using PTR-MS or APCI-MS"
+          },
+          {
+            "id": "b",
+            "text": "Solvent-assisted flavour evaporation followed by offline GC-MS"
+          },
+          {
+            "id": "c",
+            "text": "Simultaneous distillation-extraction under reduced pressure"
+          },
+          {
+            "id": "d",
+            "text": "Static headspace sampling of the intact food at equilibrium"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Proton-transfer-reaction or atmospheric pressure chemical ionisation mass spectrometry sample exhaled breath directly, giving sub-second time resolution of retronasal aroma delivery; the extraction-based methods listed are offline and destroy the temporal dimension."
+      },
+      {
+        "id": "q8",
+        "prompt": "In descriptive sensory analysis, what is the primary rationale for panel training and the use of reference standards?",
+        "options": [
+          {
+            "id": "a",
+            "text": "To calibrate assessors to a shared vocabulary and intensity scale, reducing between-assessor variance"
+          },
+          {
+            "id": "b",
+            "text": "To ensure assessors report hedonic liking rather than attribute intensity"
+          },
+          {
+            "id": "c",
+            "text": "To eliminate the need for statistical analysis of panel data"
+          },
+          {
+            "id": "d",
+            "text": "To guarantee that every assessor has identical olfactory receptor genotypes"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Descriptive panels function as analytical instruments, so training aligns terminology and scale use across assessors; hedonic response is deliberately excluded and measured separately with untrained consumers."
+      },
+      {
+        "id": "q9",
+        "prompt": "Genetic variation in the OR6A2 olfactory receptor has been associated with which well-documented perceptual phenomenon?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Perception of a soapy off-note in coriander leaf, linked to aliphatic aldehydes"
+          },
+          {
+            "id": "b",
+            "text": "Inability to detect the sweetness of sucrose"
+          },
+          {
+            "id": "c",
+            "text": "Heightened sensitivity to capsaicin burn"
+          },
+          {
+            "id": "d",
+            "text": "Complete congenital anosmia to all volatiles"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Variants near OR6A2, a receptor responsive to unsaturated aliphatic aldehydes abundant in coriander, are associated with reporting the herb as soapy; capsaicin is a TRPV1-mediated chemesthetic response rather than olfactory, and sweet perception involves T1R2/T1R3."
+      },
+      {
+        "id": "q10",
+        "prompt": "In the analysis of lipid-derived off-flavours, hexanal is most commonly used as a marker for which process?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Autoxidation of n-6 polyunsaturated fatty acids such as linoleic acid"
+          },
+          {
+            "id": "b",
+            "text": "Maillard browning between reducing sugars and lysine"
+          },
+          {
+            "id": "c",
+            "text": "Enzymatic hydrolysis of triglycerides to free fatty acids"
+          },
+          {
+            "id": "d",
+            "text": "Terpene rearrangement during citrus juice storage"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Hexanal arises from the decomposition of 13-hydroperoxides of linoleic acid and is a standard index of lipid autoxidation and rancidity development; lipolysis instead generates free fatty acids, and Maillard chemistry yields a different volatile suite."
+      },
+      {
+        "id": "q1",
+        "prompt": "In ruminant nutrition, which volatile fatty acid produced by rumen fermentation is the principal glucogenic precursor for hepatic gluconeogenesis?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Propionate"
+          },
+          {
+            "id": "b",
+            "text": "Acetate"
+          },
+          {
+            "id": "c",
+            "text": "Butyrate"
+          },
+          {
+            "id": "d",
+            "text": "Lactate"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Propionate enters the TCA cycle via succinyl-CoA and is the dominant substrate for glucose synthesis in the ruminant liver, since dietary glucose is largely fermented before absorption. Acetate and butyrate are primarily ketogenic and lipogenic rather than glucogenic."
+      },
+      {
+        "id": "q2",
+        "prompt": "In quantitative genetics, narrow-sense heritability (h²) is defined as the proportion of phenotypic variance attributable to:",
+        "options": [
+          {
+            "id": "a",
+            "text": "Additive genetic variance"
+          },
+          {
+            "id": "b",
+            "text": "Total genetic variance including dominance and epistasis"
+          },
+          {
+            "id": "c",
+            "text": "Permanent environmental variance"
+          },
+          {
+            "id": "d",
+            "text": "Genotype-by-environment interaction variance"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Narrow-sense heritability is VA/VP and predicts response to selection because only additive effects are reliably transmitted from parent to offspring; broad-sense heritability (H²) uses total genetic variance and does not predict selection response as directly."
+      },
+      {
+        "id": "q3",
+        "prompt": "What is the principal advantage of genomic selection over traditional pedigree-based BLUP evaluation in livestock breeding programmes?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It raises accuracy in young animals without progeny records, shortening the generation interval"
+          },
+          {
+            "id": "b",
+            "text": "It eliminates the need for phenotypic records in the reference population"
+          },
+          {
+            "id": "c",
+            "text": "It removes the effect of inbreeding on genetic merit entirely"
+          },
+          {
+            "id": "d",
+            "text": "It converts low-heritability traits into Mendelian single-gene traits"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Genomic prediction uses dense marker genotypes trained on a reference population with phenotypes, giving useful accuracy for selection candidates before they have offspring; the resulting reduction in generation interval is the main driver of increased genetic gain per year."
+      },
+      {
+        "id": "q4",
+        "prompt": "In bovine oestrous synchronisation, what is the physiological role of prostaglandin F2α?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It induces luteolysis of a responsive corpus luteum, removing progesterone suppression of oestrus"
+          },
+          {
+            "id": "b",
+            "text": "It directly triggers the preovulatory LH surge independent of oestradiol"
+          },
+          {
+            "id": "c",
+            "text": "It maintains the corpus luteum and prolongs the luteal phase"
+          },
+          {
+            "id": "d",
+            "text": "It stimulates follicular wave emergence by suppressing FSH"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "PGF2α of uterine origin causes regression of the corpus luteum, and the resulting fall in progesterone permits the gonadotrophin support that leads to oestrus and ovulation. It is ineffective in the first few days after ovulation because the young CL is refractory, which is why protocols such as Ovsynch combine it with GnRH."
+      },
+      {
+        "id": "q5",
+        "prompt": "Negative energy balance in early lactation dairy cattle predisposes to ketosis primarily through which mechanism?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Adipose mobilisation floods the liver with NEFA that exceed oxidative and export capacity, yielding ketone bodies"
+          },
+          {
+            "id": "b",
+            "text": "Rumen pH falls below 5.5, allowing absorption of preformed ketones from digesta"
+          },
+          {
+            "id": "c",
+            "text": "Excess dietary protein is deaminated into acetoacetate in the mammary gland"
+          },
+          {
+            "id": "d",
+            "text": "Insulin concentrations rise sharply, driving hepatic ketogenesis"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "When intake lags behind the energy demand of lactation, non-esterified fatty acids released from adipose tissue arrive at the liver faster than they can be fully oxidised or exported as VLDL, so acetyl-CoA is diverted to ketogenesis and fat accumulates hepatically. Depressed rather than elevated insulin is characteristic of this state."
+      },
+      {
+        "id": "q6",
+        "prompt": "Milk fat depression in dairy cattle fed high-concentrate diets is best explained by which contemporary theory?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Altered rumen biohydrogenation produces trans-10, cis-12 CLA, which inhibits mammary lipogenic gene expression"
+          },
+          {
+            "id": "b",
+            "text": "Insufficient dietary energy limits the supply of acetate for de novo synthesis"
+          },
+          {
+            "id": "c",
+            "text": "Elevated rumen ammonia binds milk fat globule membranes in the udder"
+          },
+          {
+            "id": "d",
+            "text": "Excess dietary calcium forms insoluble soaps that block fat secretion"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The biohydrogenation theory holds that low rumen pH shifts microbial pathways to produce specific trans intermediates, notably trans-10, cis-12 conjugated linoleic acid, which downregulates key lipogenic enzymes such as acetyl-CoA carboxylase and fatty acid synthase in the mammary gland. This replaced the older glucogenic-insulin explanation."
+      },
+      {
+        "id": "q7",
+        "prompt": "In animal welfare science, what is the central premise of the Five Domains model as distinct from the Five Freedoms?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It assesses physical states as inputs to an inferred affective state, allowing for positive as well as negative welfare"
+          },
+          {
+            "id": "b",
+            "text": "It restricts welfare assessment strictly to measurable physiological stress markers"
+          },
+          {
+            "id": "c",
+            "text": "It defines welfare solely in terms of natural behaviour expression"
+          },
+          {
+            "id": "d",
+            "text": "It replaces subjective assessment with productivity metrics such as growth rate"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The Five Domains framework treats nutrition, environment, health, and behavioural interaction as contributors to a fifth, mental domain, explicitly grading welfare along a scale that includes positive experiences rather than only the absence of the negatives specified by the Five Freedoms."
+      },
+      {
+        "id": "q8",
+        "prompt": "Which immunological feature of ruminants, horses, and pigs makes colostrum intake critical within the first hours after birth?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The epitheliochorial placenta blocks prenatal immunoglobulin transfer, so neonates are agammaglobulinaemic at birth"
+          },
+          {
+            "id": "b",
+            "text": "Neonates cannot synthesise any immunoglobulin for the first six months of life"
+          },
+          {
+            "id": "c",
+            "text": "Maternal antibodies cross the placenta but are destroyed by gastric acid before birth"
+          },
+          {
+            "id": "d",
+            "text": "Colostrum supplies the neonate's entire complement of T lymphocytes"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The multi-layered epitheliochorial and synepitheliochorial placentae of these species prevent maternal IgG from reaching the fetus, so passive transfer depends on colostral immunoglobulin absorbed by pinocytosis across the intestine before gut closure at roughly 24 hours. Failure of passive transfer is a major determinant of neonatal morbidity."
+      },
+      {
+        "id": "q9",
+        "prompt": "Enteric methane from ruminants arises principally from which process?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Methanogenic archaea reducing CO₂ with hydrogen generated during microbial fermentation"
+          },
+          {
+            "id": "b",
+            "text": "Bacterial decarboxylation of dietary methionine in the abomasum"
+          },
+          {
+            "id": "c",
+            "text": "Anaerobic degradation of urea excreted into the rumen via saliva"
+          },
+          {
+            "id": "d",
+            "text": "Incomplete hepatic oxidation of absorbed volatile fatty acids"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Hydrogen released during fibre fermentation is used by rumen methanogens to reduce carbon dioxide to methane, which serves as a hydrogen sink but represents a loss of typically 2 to 12 percent of gross energy intake. Mitigation strategies such as 3-nitrooxypropanol act by inhibiting methyl-coenzyme M reductase in these archaea."
+      },
+      {
+        "id": "q10",
+        "prompt": "Why is antimicrobial use in food animal production a recognised public health concern?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Selection pressure can enrich resistance genes that transfer horizontally and reach human pathogens"
+          },
+          {
+            "id": "b",
+            "text": "Antimicrobials accumulate irreversibly in muscle tissue and cause acute toxicity in consumers"
+          },
+          {
+            "id": "c",
+            "text": "Treated animals become permanently immunosuppressed and shed novel viruses"
+          },
+          {
+            "id": "d",
+            "text": "Resistance arises only through spontaneous mutation and cannot spread between bacteria"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Sub-therapeutic and therapeutic use selects for resistant commensals and pathogens, and mobile genetic elements such as plasmids and transposons can carry resistance determinants between bacterial species and into the human food chain and environment. This underpins restrictions on growth-promoter use and on antimicrobials designated critically important in human medicine."
+      }
+    ],
+    "chemistry": [
+      {
+        "id": "q1",
+        "prompt": "Why does sterling silver develop firescale during torch work, and what causes it?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Subsurface copper in the alloy oxidises to cupric oxide beneath the surface layer"
+          },
+          {
+            "id": "b",
+            "text": "Silver sulfide forms from atmospheric sulfur at annealing temperature"
+          },
+          {
+            "id": "c",
+            "text": "The silver recrystallises into coarse grains that scatter light differently"
+          },
+          {
+            "id": "d",
+            "text": "Residual flux carbonises and bonds permanently to the surface"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Sterling is 92.5% silver with the balance mostly copper; at elevated temperature oxygen diffuses in and converts subsurface copper to cupric oxide, producing a grey-purple stain that pickling will not remove because it lies below the surface. Depletion gilding, protective boric acid coatings, or oxygen-free alloys are the usual countermeasures."
+      },
+      {
+        "id": "q2",
+        "prompt": "In the raising process, what is the metallurgical purpose of interval annealing?",
+        "options": [
+          {
+            "id": "a",
+            "text": "To recrystallise the deformed grain structure and relieve work hardening before cracking occurs"
+          },
+          {
+            "id": "b",
+            "text": "To increase the carbon content of the sheet for greater hardness"
+          },
+          {
+            "id": "c",
+            "text": "To deposit a sacrificial oxide layer that lubricates the stake"
+          },
+          {
+            "id": "d",
+            "text": "To permanently enlarge the grain size and improve final polish"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Hammering introduces dislocations that progressively harden and embrittle the metal; annealing above the recrystallisation temperature nucleates new strain-free grains, restoring ductility so forming can continue. Excessive annealing is undesirable because overly coarse grains produce an orange-peel surface."
+      },
+      {
+        "id": "q3",
+        "prompt": "What distinguishes soldering from welding in metalsmithing practice?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Solder melts and flows below the melting point of the parent metals, which remain solid"
+          },
+          {
+            "id": "b",
+            "text": "Soldering requires an inert gas shield while welding does not"
+          },
+          {
+            "id": "c",
+            "text": "Soldering forms a mechanical interlock rather than any metallurgical bond"
+          },
+          {
+            "id": "d",
+            "text": "Welding is performed only on non-ferrous metals"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "In soldering and brazing a filler alloy of lower melting point wets and flows into the joint by capillary action while the parent metal stays solid, bonding through interfacial diffusion; welding fuses the parent metals themselves. The soldering/brazing distinction is conventionally set around 450 °C."
+      },
+      {
+        "id": "q4",
+        "prompt": "When executing a sequence of solder joins on a single piece, why are solders graded hard, medium, and easy?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Each successive join uses a lower-flowing alloy so earlier seams are not remelted"
+          },
+          {
+            "id": "b",
+            "text": "Harder solders produce visibly darker seams for decorative contrast"
+          },
+          {
+            "id": "c",
+            "text": "The grades correspond to the hardness of the parent metal being joined"
+          },
+          {
+            "id": "d",
+            "text": "Easy solder contains no silver and is used only for base metals"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The grades differ in flow temperature, so a maker starts with hard solder and moves down the sequence; each later join can then be brought to temperature without disturbing completed seams. The grades describe flow point, not the parent metal or the resulting colour."
+      },
+      {
+        "id": "q5",
+        "prompt": "What is the essential difference between chasing and repoussé?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Repoussé pushes the design out from the reverse; chasing refines detail from the front"
+          },
+          {
+            "id": "b",
+            "text": "Chasing is performed cold and repoussé always requires red heat"
+          },
+          {
+            "id": "c",
+            "text": "Repoussé removes metal by cutting while chasing only displaces it"
+          },
+          {
+            "id": "d",
+            "text": "Chasing applies only to cast objects and repoussé only to sheet"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "The two are complementary halves of one process: the sheet is worked from the back over pitch to raise the forms in relief, then turned and chased from the front to sharpen contours and add detail. Neither removes metal, distinguishing both from engraving."
+      },
+      {
+        "id": "q6",
+        "prompt": "In mokume-gane, what mechanism bonds the stacked billet of dissimilar metals?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Solid-state diffusion under heat and pressure below the melting points of the layers"
+          },
+          {
+            "id": "b",
+            "text": "Capillary flow of a silver brazing alloy between each sheet"
+          },
+          {
+            "id": "c",
+            "text": "Mechanical riveting concealed within the laminate"
+          },
+          {
+            "id": "d",
+            "text": "Full melting and mixing of the layers into a homogeneous alloy"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Mokume-gane relies on diffusion bonding: the clean, oxide-free stack is clamped and held near but below the eutectic or melting temperature so atoms migrate across the interfaces. Melting would destroy the distinct layers that give the technique its woodgrain pattern."
+      },
+      {
+        "id": "q7",
+        "prompt": "In vitreous enamelling, what causes the failure known as crazing?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A mismatch in thermal expansion coefficient between enamel and metal substrate"
+          },
+          {
+            "id": "b",
+            "text": "Firing at too low a temperature for the flux to fully mature"
+          },
+          {
+            "id": "c",
+            "text": "Contamination of the enamel with metal oxide colourants"
+          },
+          {
+            "id": "d",
+            "text": "Application of counter-enamel on the reverse of the piece"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Enamel is a glass fused to metal, and if the two contract at different rates on cooling the enamel goes into tension and cracks. Counter-enamelling is in fact the standard remedy, balancing stresses across the substrate rather than causing the fault."
+      },
+      {
+        "id": "q8",
+        "prompt": "In lost-wax casting, what is the primary function of the sprue and vent system?",
+        "options": [
+          {
+            "id": "a",
+            "text": "To deliver metal to the cavity and allow gas to escape, feeding shrinkage as the casting solidifies"
+          },
+          {
+            "id": "b",
+            "text": "To hold the wax model rigid so the investment does not distort it"
+          },
+          {
+            "id": "c",
+            "text": "To conduct heat away from the flask and accelerate cooling"
+          },
+          {
+            "id": "d",
+            "text": "To filter oxide inclusions out of the molten metal by gravity"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Sprues form the channels through which molten metal enters, while vents let displaced air and burnout gases escape; correct sprue placement and thickness also maintain a reservoir that feeds the casting as it contracts, preventing shrinkage porosity."
+      },
+      {
+        "id": "q9",
+        "prompt": "Why is depletion gilding used on high-karat gold alloys and on tumbaga in pre-Columbian metallurgy?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Repeated oxidation and acid removal of base metals leaves a surface enriched in noble metal"
+          },
+          {
+            "id": "b",
+            "text": "It electroplates a thin gold film using a sacrificial anode"
+          },
+          {
+            "id": "c",
+            "text": "It amalgamates gold with mercury which is then driven off by heat"
+          },
+          {
+            "id": "d",
+            "text": "It diffuses gold leaf into the substrate under pressure"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Depletion gilding works subtractively: heating oxidises copper and other base metals at the surface, pickling dissolves the oxides, and repeating the cycle leaves a porous noble-metal-rich skin that is then burnished. Fire gilding, by contrast, is the mercury amalgam process and is not the same technique."
+      },
+      {
+        "id": "q10",
+        "prompt": "Which studio hazard is specifically associated with heating cadmium-bearing silver solders, and what is the correct response?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Cadmium oxide fume, which is acutely toxic by inhalation; use cadmium-free solder and local exhaust ventilation"
+          },
+          {
+            "id": "b",
+            "text": "Cadmium sulfide dust, which is only a mild skin irritant requiring gloves"
+          },
+          {
+            "id": "c",
+            "text": "Release of hydrogen gas, controlled by lowering the torch flame temperature"
+          },
+          {
+            "id": "d",
+            "text": "Formation of silver nitrate vapour, neutralised by pickling after soldering"
+          }
+        ],
+        "correct_option_id": "a",
+        "explanation": "Heating cadmium-containing solders generates cadmium oxide fume that can cause severe pulmonary injury from short exposures and is a recognised carcinogen, which is why cadmium-free solders have largely replaced them and why extraction at the bench is standard practice."
+      }
+    ]
+  }
