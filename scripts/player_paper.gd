@@ -2,6 +2,8 @@
 class_name PlayerPaper
 extends StaticBody3D
 
+const FULLSCREEN_SCENE := preload("res://scenes/player_paper_fullscreen.tscn")
+
 @export var WIDTH := 0.21:
 	set(value):
 		WIDTH = maxf(value, 0.01)
@@ -17,20 +19,52 @@ extends StaticBody3D
 		LENGTH = maxf(value, 0.01)
 		_apply_size()
 
+var fullscreen: PlayerPaperFullscreen
+
 @onready var _mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var _collision_shape: CollisionShape3D = $CollisionShape3D
 
 
 func _ready() -> void:
 	_apply_size()
-	if Engine.is_editor_hint() or InputManager.instance == null:
+	if Engine.is_editor_hint():
+		return
+	_spawn_fullscreen()
+	if InputManager.instance == null:
 		return
 	if not InputManager.instance.interact_pressed.is_connected(_on_interact_pressed):
 		InputManager.instance.interact_pressed.connect(_on_interact_pressed)
 
 
+func _spawn_fullscreen() -> void:
+	if fullscreen != null and is_instance_valid(fullscreen):
+		fullscreen.queue_free()
+	fullscreen = FULLSCREEN_SCENE.instantiate() as PlayerPaperFullscreen
+	add_child(fullscreen)
+	fullscreen.hide_paper()
+
+
 func _on_interact_pressed() -> void:
-	pass
+	if fullscreen == null:
+		return
+	if fullscreen.is_open():
+		fullscreen.hide_paper()
+		return
+	if not _is_player_close():
+		return
+	fullscreen.show_paper()
+
+
+func _is_player_close() -> bool:
+	var player := get_parent() as Player
+	if player == null:
+		return false
+	var max_distance := 2.0
+	if player.const_data != null:
+		max_distance = player.const_data.PAPER_INTERACT_DISTANCE
+	var delta := player.global_position - global_position
+	delta.y = 0.0
+	return delta.length() <= max_distance
 
 
 func _apply_size() -> void:

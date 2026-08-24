@@ -12,11 +12,16 @@ var table: Table
 var paper: PlayerPaper
 var const_data: ConstData
 
+var _move_input := Vector2.ZERO
+var _jump_requested := false
+
 @onready var camera: Camera3D = $Camera3D
 
 
 func _ready() -> void:
 	InputManager.instance.look_delta.connect(_on_look_delta)
+	InputManager.instance.move_vector.connect(_on_move_vector)
+	InputManager.instance.jump_pressed.connect(_on_jump_pressed)
 	_spawn_table()
 	_spawn_paper()
 
@@ -62,15 +67,23 @@ func _on_look_delta(relative: Vector2) -> void:
 	camera.rotation.x = clampf(camera.rotation.x, deg_to_rad(-89.0), deg_to_rad(89.0))
 
 
+func _on_move_vector(vector: Vector2) -> void:
+	_move_input = vector
+
+
+func _on_jump_pressed() -> void:
+	_jump_requested = true
+
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if InputManager.instance.is_jump_just_pressed() and is_on_floor():
+	if _jump_requested and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	_jump_requested = false
 
-	var input_dir := InputManager.instance.get_move_vector()
-	var direction := (transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
+	var direction := (transform.basis * Vector3(_move_input.x, 0.0, _move_input.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED

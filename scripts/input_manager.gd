@@ -3,8 +3,12 @@ extends Node
 
 signal look_delta(relative: Vector2)
 signal interact_pressed
+signal jump_pressed
+signal move_vector(vector: Vector2)
 
 static var instance: InputManager
+
+var movement_enabled := true
 
 
 func _enter_tree() -> void:
@@ -20,12 +24,11 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
-func get_move_vector() -> Vector2:
-	return Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-
-
-func is_jump_just_pressed() -> bool:
-	return Input.is_action_just_pressed("jump")
+func _physics_process(_delta: float) -> void:
+	if not movement_enabled:
+		move_vector.emit(Vector2.ZERO)
+		return
+	move_vector.emit(Input.get_vector("move_left", "move_right", "move_forward", "move_back"))
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -39,6 +42,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("interact"):
 		interact_pressed.emit()
+		return
+
+	if event.is_action_pressed("jump") and movement_enabled:
+		jump_pressed.emit()
 
 
 func _toggle_mouse_capture() -> void:

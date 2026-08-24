@@ -14,4 +14,5 @@ extends Resource
 @export var PAPER_WIDTH := 0.21
 @export var PAPER_HEIGHT := 0.008
 @export var PAPER_LENGTH := 0.297
+@export var PAPER_INTERACT_DISTANCE := 2.0
 @export var COUNTDOWN := 120.0
