@@ -1,12 +1,9 @@
-[gd_resource type="Resource" script_class="ConstData" format=3]
+[gd_resource type="Resource" script_class="ConstData" format=3 uid="uid://bedaw6ylnujwl"]
 
-[ext_resource type="Script" path="res://scripts/const_data.gd" id="1_const_data"]
+[ext_resource type="Script" uid="uid://c8v8gbqupk7ae" path="res://scripts/const_data.gd" id="1_const_data"]
 
 [resource]
 script = ExtResource("1_const_data")
-TABLE_WIDTH = 1.5
-TABLE_HEIGHT = 0.75
-TABLE_LENGTH = 1.5
-STUDENT_WIDTH = 0.6
-STUDENT_HEIGHT = 1.1
-STUDENT_LENGTH = 0.45
+TABLE_GRID_SIZE = 8
+TABLE_SPACING = 4.0
+TEACHER_SPAWN_POSITION = Vector3(10, 0, -8)

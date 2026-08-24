@@ -12,12 +12,7 @@ const TEACHER_SCENE := preload("res://scenes/teacher.tscn")
 const STUDENT_SCENE := preload("res://scenes/student.tscn")
 const SPAWN_POSITION := Vector3.ZERO
 
-@export var TABLE_GRID_SIZE := 16
-@export var TABLE_SPACING := 6.0
 @export var const_data: ConstData
-@export var TEACHER_SPAWN_POSITION := Vector3(0.0, 0.0, -8.0)
-@export var STUDENT_TABLE_GAP := 0.25
-@export var COUNTDOWN := 120.0
 
 var player: CharacterBody3D
 var teacher: Teacher
@@ -37,7 +32,7 @@ func _ready() -> void:
 
 
 func start_game() -> void:
-	elapsed_time = COUNTDOWN
+	elapsed_time = const_data.COUNTDOWN
 	is_running = true
 	_spawn_player()
 	_spawn_tables()
@@ -79,7 +74,7 @@ func _spawn_teacher() -> void:
 		teacher.queue_free()
 
 	teacher = TEACHER_SCENE.instantiate() as Teacher
-	teacher.position = TEACHER_SPAWN_POSITION
+	teacher.position = const_data.TEACHER_SPAWN_POSITION
 	add_child(teacher)
 	teacher.start_moving(tables)
 	var vision := teacher.get_node("TeacherVision") as TeacherVision
@@ -91,17 +86,17 @@ func _spawn_teacher() -> void:
 
 func _spawn_tables() -> void:
 	_clear_tables()
-	var origin := (TABLE_GRID_SIZE - 1) * TABLE_SPACING * 0.5
-	for x in TABLE_GRID_SIZE:
-		for z in TABLE_GRID_SIZE:
+	var origin := (const_data.TABLE_GRID_SIZE - 1) * const_data.TABLE_SPACING * 0.5
+	for x in const_data.TABLE_GRID_SIZE:
+		for z in const_data.TABLE_GRID_SIZE:
 			var table := TABLE_SCENE.instantiate() as Table
 			table.WIDTH = const_data.TABLE_WIDTH
 			table.HEIGHT = const_data.TABLE_HEIGHT
 			table.LENGTH = const_data.TABLE_LENGTH
 			table.position = Vector3(
-				x * TABLE_SPACING - origin,
+				x * const_data.TABLE_SPACING - origin,
 				0.0,
-				z * TABLE_SPACING - origin
+				z * const_data.TABLE_SPACING - origin
 			)
 			add_child(table)
 			tables.append(table)
@@ -117,7 +112,7 @@ func _spawn_students() -> void:
 		student.position = Vector3(
 			table.position.x,
 			0.0,
-			table.position.z + table.LENGTH * 0.5 + const_data.STUDENT_LENGTH * 0.5 + STUDENT_TABLE_GAP
+			table.position.z + table.LENGTH * 0.5 + const_data.STUDENT_LENGTH * 0.5 + const_data.STUDENT_TABLE_GAP
 		)
 		add_child(student)
 		table.student = student

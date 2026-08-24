@@ -7,3 +7,8 @@ extends Resource
 @export var STUDENT_WIDTH := 0.6
 @export var STUDENT_HEIGHT := 1.1
 @export var STUDENT_LENGTH := 0.45
+@export var TABLE_GRID_SIZE := 16
+@export var TABLE_SPACING := 6.0
+@export var TEACHER_SPAWN_POSITION := Vector3(0.0, 0.0, -8.0)
+@export var STUDENT_TABLE_GAP := 0.25
+@export var COUNTDOWN := 120.0

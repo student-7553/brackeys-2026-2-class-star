@@ -34,7 +34,6 @@ size = Vector3(100, 1, 100)
 [node name="GameManager" type="Node" parent="." unique_id=1222027095]
 script = ExtResource("1_game_manager")
 const_data = ExtResource("3_const_data")
-TEACHER_SPAWN_POSITION = Vector3(10, 0, -8)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=589472149]
 environment = SubResource("Environment_world")
