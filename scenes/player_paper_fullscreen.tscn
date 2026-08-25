@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://j3nqm8iv5lg5"]
 
 [ext_resource type="Script" uid="uid://b7hwghqj37b2y" path="res://scripts/player_paper_fullscreen.gd" id="1_player_paper_fullscreen"]
+[ext_resource type="Resource" uid="uid://bqx7n2k8m4vwp" path="res://resources/exam_questions.tres" id="2_exam_questions"]
 
 [node name="PlayerPaperFullscreen" type="CanvasLayer" unique_id=1320846165]
 layer = 20
 visible = false
 script = ExtResource("1_player_paper_fullscreen")
+exam_questions = ExtResource("2_exam_questions")
 
 [node name="Dim" type="ColorRect" parent="." unique_id=783397161]
 anchors_preset = 15
@@ -26,3 +28,30 @@ mouse_filter = 2
 [node name="Paper" type="ColorRect" parent="Center" unique_id=93321212]
 custom_minimum_size = Vector2(500, 707)
 layout_mode = 2
+color = Color(0.96, 0.94, 0.88, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Center/Paper" unique_id=1048293847]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Center/Paper/MarginContainer" unique_id=1583920471]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="PromptLabel" type="Label" parent="Center/Paper/MarginContainer/ScrollContainer" unique_id=1983746251]
+custom_minimum_size = Vector2(452, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3

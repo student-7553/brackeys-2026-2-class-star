@@ -39,7 +39,7 @@ func _spawn_table() -> void:
 	table.position = Vector3(
 		0.0,
 		0.0,
-		-(const_data.STUDENT_LENGTH * 0.5 + const_data.TABLE_LENGTH * 0.5 + const_data.STUDENT_TABLE_GAP)
+		- (const_data.STUDENT_LENGTH * 0.5 + const_data.TABLE_LENGTH * 0.5 + const_data.STUDENT_TABLE_GAP)
 	)
 	add_child(table)
 

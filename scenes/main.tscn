@@ -50,6 +50,7 @@ shadow_enabled = true
 [node name="Ground" type="StaticBody3D" parent="." unique_id=140891829]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1844152984]
+visible = false
 mesh = SubResource("PlaneMesh_ground")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1473388302]

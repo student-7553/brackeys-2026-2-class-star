@@ -29,14 +29,14 @@ func _ready() -> void:
 	_apply_size()
 	if Engine.is_editor_hint():
 		return
-	_spawn_fullscreen()
+	_spawn_fullscreen_paper()
 	if InputManager.instance == null:
 		return
 	if not InputManager.instance.interact_pressed.is_connected(_on_interact_pressed):
 		InputManager.instance.interact_pressed.connect(_on_interact_pressed)
 
 
-func _spawn_fullscreen() -> void:
+func _spawn_fullscreen_paper() -> void:
 	if fullscreen != null and is_instance_valid(fullscreen):
 		fullscreen.queue_free()
 	fullscreen = FULLSCREEN_SCENE.instantiate() as PlayerPaperFullscreen
